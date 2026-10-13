@@ -1,7 +1,6 @@
 # Node.js backend — projektsablon
 
 Fejlesztői környezet **és** minimális rétegelt váz Node.js backend projektekhez.
-Beállítva, kipróbálva, innen indul minden projektünk.
 
 - **Eszközök:** ESLint, Prettier, EditorConfig, DotENV, Better Todo Tree
 - **Váz:** Express-alkalmazás `route → controller → service` rétegekkel, központi hibakezeléssel
@@ -175,7 +174,7 @@ a `better-todo-tree.general.tags` listában **és** a
 
 ## Mit nem tettünk bele, és miért?
 
-A cél nem a teljesség, hanem hogy **minden beállításnak oka legyen**.
+A cél nem a teljesség, hanem a **célszerűség**.
 
 | Kihagyva                                                                         | Miért?                                                                                                  |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
@@ -191,16 +190,3 @@ A `jsconfig.json`-ben a **`checkJs` alapból `false`**. Ha már magabiztosan ír
 állítsd `true`-ra: a JSDoc-kommentjeid alapján valódi típushibákat fog találni.
 
 ---
-
-## Kipróbálva
-
-A sablon nem elméletben működik:
-
-- `npm run dev` elindul (Node 24.20.0, Express 5), és **mind az öt végpont**
-  a várt státuszkódot és hibakódot adja — beleértve a `404`-et, a `400`-at
-  és a nem létező útvonalat;
-- `npm run lint` tiszta — és egy szándékosan hibás fájlon **mind a négy hibát megtalálja**
-  (nem használt változó, `==`, nem létező változó, állandó feltétel);
-- `npm run lint:fix` kijavítja a `!!a` → `a` és a `typeof a == "x"` → `===` eseteket,
-  a `"0" == 0`-t viszont **nem** — mert az megváltoztatná a program működését;
-- `npm run format:check` szerint minden fájl formázott.
