@@ -1,0 +1,20 @@
+// Ez a fájl NEM a futtatásról szól: a VS Code-nak mondja meg, hogyan értelmezze
+// a projektet. Ettől pontosabb lesz a kódkiegészítés és az automatikus import.
+{
+  "compilerOptions": {
+    // ESM-et írunk, a legújabb nyelvi elemekkel.
+    "module": "ESNext",
+    "target": "ES2022",
+
+    // Így oldja fel a "./valami.js" alakú importokat (Node-stílus).
+    "moduleResolution": "bundler",
+
+    // Típusellenőrzés a sima JavaScriptben is.
+    // ALAPBÓL KIKAPCSOLVA: kezdetben sok aláhúzást adna. Ha már magabiztosan
+    // írod a kódot, állítsd true-ra — a JSDoc-kommentjeid alapján valódi
+    // hibákat fog találni. (Lásd az 1. blokk 4. fejezetét.)
+    "checkJs": false
+  },
+  "include": ["**/*.js"],
+  "exclude": ["node_modules", "generated", "dist", "build", "coverage"]
+}

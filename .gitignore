@@ -1,0 +1,25 @@
+# Amit a Git NE kövessen nyomon.
+
+# A letöltött csomagok: akár több száz MB, és az „npm install” bármikor
+# újra előállítja. A package-lock.json ELLENBEN verziókezelőbe kerül!
+node_modules/
+
+# Titkok: adatbázis-jelszó, JWT-kulcs, SMTP-adatok.
+# Helyette a .env.minta fájl kerül a repóba, értékek nélkül.
+.env
+.env.local
+.env.*.local
+
+# Generált kimenetek.
+dist/
+build/
+generated/
+coverage/
+
+# Naplók.
+*.log
+npm-debug.log*
+
+# Az operációs rendszer szemete.
+.DS_Store
+Thumbs.db

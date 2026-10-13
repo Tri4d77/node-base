@@ -1,0 +1,19 @@
+# A repó egységesen LF sorvéget használ — ugyanazt, amit a .editorconfig
+# (end_of_line = lf), a .prettierrc (endOfLine: "lf") és a
+# .vscode/settings.json (files.eol: "\n") is előír.
+#
+# MIÉRT KELL EZ? Windowson a Git alapértelmezése (core.autocrlf=true) kicserélné
+# a sorvégeket CRLF-re kicsomagoláskor. Ekkor a Prettier MINDEN fájlt
+# formázatlannak jelezne, és a Git-változásokban az egész fájl módosultnak látszana.
+# Ez a sor felülírja a gép beállítását: a munkakönyvtárban is LF lesz.
+* text=auto eol=lf
+
+# A bináris fájlokhoz a Git ne nyúljon hozzá.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.woff binary
+*.woff2 binary

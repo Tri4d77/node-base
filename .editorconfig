@@ -1,0 +1,27 @@
+# EditorConfig — szerkesztőfüggetlen formázási szabályok.
+# Nemcsak a VS Code érti: a legtöbb szerkesztő támogatja (a VS Code-hoz kell
+# az EditorConfig.EditorConfig kiegészítő, lásd .vscode/extensions.json).
+#
+# Ez a fájl a felelős a behúzásért, a sorvégért és a fájlvégi üres sorért —
+# ezért ezeket NEM ismételjük meg a .vscode/settings.json-ben.
+
+# Itt a projekt gyökere: feljebb ne keressen több beállítást.
+root = true
+
+# Minden fájlra érvényes.
+[*]
+charset = utf-8
+
+# LF sorvég Windowson is — különben a Git minden sort megváltozottnak látna.
+end_of_line = lf
+
+# Szóközzel húzunk be, kettővel (a JavaScript-világ szokása).
+indent_style = space
+indent_size = 2
+
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Markdownban a sorvégi két szóköz sortörést jelent — ott nem vágjuk le.
+[*.md]
+trim_trailing_whitespace = false

@@ -1,0 +1,113 @@
+// Projektszintű VS Code-beállítások.
+//
+// ELV: ide CSAK az kerül, ami a PROJEKTHEZ tartozik, vagy aminek minden
+// munkatárs hasznát veszi. A személyes ízlés (téma, betűméret, terminálprofil,
+// kezdőoldal) a saját felhasználói beállításaidba való, nem ide.
+//
+// Ami NINCS itt, és miért:
+//   - behúzás, sorvég, fájlvégi üres sor  → a .editorconfig intézi (szerkesztőfüggetlen)
+//   - zárójel-színezés, automatikus import → a VS Code-ban már alapból bekapcsolt
+//   - a node_modules elrejtése             → szándékosan látható marad; keresni úgysem
+//                                            keres benne (lásd search.exclude)
+{
+  // ---------------------------------------------------------------------
+  //  Formázás — Prettier
+  // ---------------------------------------------------------------------
+
+  // Mentéskor formázunk. Ez a legfontosabb kényelmi beállítás: nem kell
+  // a formázással foglalkozni, és a Git-változásokban csak a valódi módosítás látszik.
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // ---------------------------------------------------------------------
+  //  Hibák javítása — ESLint
+  // ---------------------------------------------------------------------
+
+  // Mentéskor az ESLint kijavítja, amit BIZTONSÁGOSAN tud: a felesleges
+  // kettős tagadást (!!a → a), vagy a == jelet ===-re OTT, ahol a típus ismert
+  // (typeof a == "number" → ===). Amit nem tud eldönteni, azt nem nyúlja meg:
+  // a "0" == 0 maradni fog, mert a javítás megváltoztatná a program működését.
+  // Az "explicit" azt jelenti: a kézi mentésnél fut le, nem automentésnél.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  // ---------------------------------------------------------------------
+  //  Kényelem
+  // ---------------------------------------------------------------------
+
+  // Függőleges vonal a 100. karakternél — ugyanott, ahol a Prettier tördel
+  // (.prettierrc → printWidth: 100). Így látod, mikor lesz hosszú a sor.
+  "editor.rulers": [100],
+
+  // Egységes sorvég Windowson is. Enélkül a Git minden sort megváltozottnak
+  // látna, amikor a munkatársad más rendszeren nyitja meg a fájlt.
+  "files.eol": "\n",
+
+  // A mappákat ne vonja össze egy sorba (src/routes helyett src › routes).
+  // Beágyazott szerkezetnél sokkal átláthatóbb.
+  "explorer.compactFolders": false,
+
+  // Fájl átnevezésekor vagy mozgatásakor javítsa az importokat.
+  // A régi "javascript.updateImportsOnFileMove.enabled" kulcs elavult — a VS Code
+  // maga jelzi, hogy helyette ez a JavaScriptre ÉS TypeScriptre közös kulcs való.
+  "js/ts.updateImportsOnFileMove.enabled": "always",
+
+  // A keresés és a Ctrl+P ne turkáljon a generált mappákban.
+  // (A .gitignore-ban szereplőket a VS Code amúgy is kihagyja, de egy friss,
+  // még nem verziókezelt projektben ez a biztosíték.)
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/generated": true,
+    "**/coverage": true,
+    "**/dist": true
+  },
+
+  // A .env.minta, .env.teszt és társai is kapjanak szintaxiskiemelést.
+  // (A sima .env-et a mikestead.dotenv kiegészítő magától felismeri.)
+  "files.associations": {
+    ".env.*": "dotenv"
+  },
+
+  // ---------------------------------------------------------------------
+  //  Better Todo Tree (FanaticPythoner.better-todo-tree)
+  //
+  //  A kódban hagyott jelöléseket gyűjti egy fába (bal oldali sáv).
+  //  FIGYELEM: egy saját címkét KÉT helyen kell felvenni — a „tags” listába
+  //  ÉS a „customHighlight” objektumba; a kettő nem pótolja egymást.
+  // ---------------------------------------------------------------------
+
+  "better-todo-tree.general.tags": ["TODO", "FIXME", "BUG", "NOTE"],
+
+  // Csak magát a címkét színezzük, nem az egész sort — kevesebb vizuális zaj.
+  "better-todo-tree.highlights.defaultHighlight": {
+    "type": "tag",
+    "foreground": "#0e1512",
+    "gutterIcon": true
+  },
+
+  "better-todo-tree.highlights.customHighlight": {
+    // Amit még meg kell csinálni.
+    "TODO": { "background": "#5fbf72", "icon": "check", "iconColour": "#5fbf72" },
+    // Működik, de rossz — javítani kell.
+    "FIXME": { "background": "#fb923c", "icon": "tools", "iconColour": "#fb923c" },
+    // Megerősített hiba.
+    "BUG": { "background": "#f87171", "icon": "bug", "iconColour": "#f87171" },
+    // Magyarázat a munkatársnak — nem tennivaló, ezért a fában nem jelenik meg.
+    "NOTE": {
+      "background": "#a78bfa",
+      "icon": "note",
+      "iconColour": "#a78bfa",
+      "hideFromTree": true
+    }
+  },
+
+  // A fa ne a csomagokkal és a generált fájlokkal legyen tele.
+  "better-todo-tree.filtering.excludeGlobs": [
+    "**/node_modules/**",
+    "**/generated/**",
+    "**/coverage/**",
+    "**/dist/**",
+    "**/package-lock.json"
+  ]
+}

@@ -1,0 +1,28 @@
+// Ajánlott kiegészítők. Aki megnyitja ezt a mappát, felajánlva kapja a listát
+// (Extensions panel → „Recommended”), és egy kattintással telepítheti mindet.
+//
+// Csak az van benne, amire ennek a sablonnak a beállításai TÉNYLEGESEN
+// támaszkodnak — nincs „jó lenne még” tétel. Mind ingyenes.
+{
+  "recommendations": [
+    // A kód ellenőrzése (eslint.config.js). Enélkül a settings.json
+    // „source.fixAll.eslint” beállítása nem csinál semmit.
+    "dbaeumer.vscode-eslint",
+
+    // A kód formázása (.prettierrc). Enélkül a „formatOnSave” nem tudná,
+    // mivel formázzon.
+    "esbenp.prettier-vscode",
+
+    // Az .editorconfig érvényesítése — ez tartja a behúzást és a sorvéget.
+    "EditorConfig.EditorConfig",
+
+    // Szintaxiskiemelés a .env fájlokhoz: azonnal látszik az elgépelt kulcs
+    // vagy a rossz helyre tett idézőjel.
+    "mikestead.dotenv",
+
+    // A kódban hagyott TODO/FIXME/BUG jelölések fában (lásd settings.json).
+    "FanaticPythoner.better-todo-tree"
+  ],
+
+  "unwantedRecommendations": []
+}

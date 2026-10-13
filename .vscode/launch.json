@@ -1,0 +1,46 @@
+// Hibakeresési konfigurációk — az F5 ezeket kínálja fel.
+//
+// Töréspont: kattints a sorszám bal oldalára (piros pötty), majd F5.
+// Lépkedés: F10 (átlép), F11 (belép), F5 (tovább).
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // A szokásos indítás: a projekt belépési pontja.
+      "type": "node",
+      "request": "launch",
+      "name": "Indítás",
+      "program": "${workspaceFolder}/index.js",
+
+      // A .env értékei is töltődjenek be — de ne hibázzon, ha még nincs .env.
+      "runtimeArgs": ["--env-file-if-exists=.env"],
+
+      // Ne lépkedjünk bele a Node belső fájljaiba.
+      "skipFiles": ["<node_internals>/**"],
+
+      // A beépített terminálban fusson: így a console.log kimenete ott jelenik meg,
+      // és billentyűzetről is lehet vele kommunikálni.
+      "console": "integratedTerminal"
+    },
+    {
+      // Fejlesztői mód: mentés után magától újraindul.
+      "type": "node",
+      "request": "launch",
+      "name": "Fejlesztői mód (--watch)",
+      "program": "${workspaceFolder}/index.js",
+      "runtimeArgs": ["--watch", "--env-file-if-exists=.env"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal"
+    },
+    {
+      // Az ÉPPEN MEGNYITOTT fájl futtatása — egy-egy szkript kipróbálásához.
+      "type": "node",
+      "request": "launch",
+      "name": "Az aktuális fájl",
+      "program": "${file}",
+      "runtimeArgs": ["--env-file-if-exists=.env"],
+      "skipFiles": ["<node_internals>/**"],
+      "console": "integratedTerminal"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# Amit a Prettier NE formázzon.
+
+node_modules
+package-lock.json
+
+# Generált kimenetek.
+dist
+build
+generated
+coverage
